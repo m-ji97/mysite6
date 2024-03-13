@@ -74,7 +74,7 @@
 						<!-- //guestWrite -->
 						
 					</form>	
-					
+					<div id="guestbookListArea">
 					<!-- 
 						<table class="guestRead">
 							<colgroup>
@@ -95,7 +95,7 @@
 						</table> -->
 						<!-- //guestRead -->
 					
-					
+					</div>
 				</div>
 				<!-- //guestbook -->
 			
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	//리스트요청 데이타만 받을거야
 	axios({
 		method: 'get',           // put, post, delete                   
-		url: '/mysite6/api/guestbooks',
+		url: '${pageContext.request.contextPath}/api/guestbooks',
     	headers: {"Content-Type" : "application/json; charset=utf-8"}, //전송타입
         //params: guestbookVo,  //get방식 파라미터로 값이 전달
         //data: guestbookVo,   //put, post, delete 방식 자동으로 JSON으로 변환 전달
@@ -152,9 +152,33 @@ document.addEventListener("DOMContentLoaded", function(){
 ///////함수들////////////
 
 //방명록 글 그리기
-function render(guestbooVo){
+function render(guestbookVo){
 	console.log("render()");
-	console.log(guestbooVo);
+	console.log(guestbookVo);
+	
+	let guestbookListArea = document.querySelector("#guestbookListArea");
+
+	let str='';
+	str+=' <table class="guestRead"> ';
+	str+=' 		<colgroup> ';
+	str+='			<col style="width: 10%;"> ';
+	str+='			<col style="width: 40%;"> ';
+	str+='			<col style="width: 40%;"> ';
+	str+='			<col style="width: 10%;"> ';
+	str+='		</colgroup> ';
+	str+='		<tr> ';
+	str+='			<td>'+ guestbookVo.no +'</td> ';
+	str+='			<td>'+ guestbookVo.name +'</td> ';
+	str+='			<td>'+ guestbookVo.regDate +'</td> ';
+	str+='			<<td><a href="">[삭제]</a></td> ';
+	str+='		</tr> ';
+	str+='		<tr> ';
+	str+='			<td colspan=4 class="text-left">'+ guestbookVo.content +'</td> ';
+	str+='		</tr> ';
+	str+=' </table> ';
+	
+	guestbookListArea.insertAdjacentHTML("beforeend",str);
+	
 }
 
 

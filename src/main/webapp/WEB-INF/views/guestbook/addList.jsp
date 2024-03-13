@@ -43,7 +43,7 @@
 				<!-- //content-head -->
 
 				<div id="guestbook">
-					<form action="${pageContext.request.contextPath}/guestbook/add" method="get">
+					<form action="/guestbook/add" method="get">
 						<table id="guestAdd">
 							<colgroup>
 								<col style="width: 70px;">
