@@ -66,5 +66,13 @@ public class GuestbookDao {
 		GuestbookVo guestbookVo = sqlSession.selectOne("guestbook.selectOne", no);
 		return guestbookVo;
 	}
+	
+	//삭제
+	public GuestbookVo insertDeletekey(int no) {
+		System.out.println("GuestbookDao.insertDeletekey()");
+		
+		sqlSession.delete("guestbook.delete", no);
+		return GuestbookVo;
+	}
 
 }

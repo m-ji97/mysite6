@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function(){
 		
 		axios({
 			method: 'post', // put, post, delete
-			url: '${pageContext.request.contextPath}/api/guestbooks',
+			url: '${pageContext.request.contextPath}/api/guestbooks/delete',
 			headers: {"Content-Type" : "application/json; charset=utf-8"}, //전송타입
 			params: guestbookVo, //get방식 파라미터로 값이 전달
 			//data: guestbookVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
