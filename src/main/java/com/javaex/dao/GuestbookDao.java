@@ -47,9 +47,21 @@ public class GuestbookDao {
 		return count;
 	}
 	
-	//전체 리스트
-	public GuestbookVo guestbookSelectOne(int no){
-		System.out.println("GuestbookDao.guestbookSelectOne()");
+	//ajax등록
+	public int insertSelecKey(GuestbookVo guestbookVo) {
+		System.out.println("GuestbookDao.insertSelecKey()");
+		
+		System.out.println(guestbookVo); //no비워있음
+		int count = sqlSession.insert("insertSelectKey",guestbookVo);
+		System.out.println(guestbookVo);//no있음
+		guestbookVo.getNo();
+		
+		return count;
+	}
+	
+	//데이터 1개 가져오기 no 1명 데이터 가져오기
+	public GuestbookVo gustbookSelectOne(int no) {
+		System.out.println("GuestbookDao.gustbookSelectOne()");
 		
 		GuestbookVo guestbookVo = sqlSession.selectOne("guestbook.selectOne", no);
 		return guestbookVo;

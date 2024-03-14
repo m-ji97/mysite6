@@ -38,7 +38,7 @@ public class GuestbookService {
 		int count = guestbookDao.guestbookDelete(guestbookVo);
 		return count;
 	}
-
+	/*
 	// 방명록 등록 ajax
 	public GuestbookVo exeAddandGuest(GuestbookVo guestbookVo) {
 		System.out.println("GuestService.exeAddandGuest()");
@@ -53,6 +53,19 @@ public class GuestbookService {
 
 		GuestbookVo gVo = guestbookDao.guestbookSelectOne(no);
 		return gVo;
+	}*/
+	
+	//ajax 등록 저장
+	public GuestbookVo exeAddandGuest(GuestbookVo guestbookVo) {
+		System.out.println("GuestService.exeAddandGuest()");
+		
+		//저장
+		guestbookDao.insertSelecKey(guestbookVo);
+		
+		//1명데이터 가져오기
+		GuestbookVo gvo =guestbookDao.gustbookSelectOne(guestbookVo.getNo());
+		
+		return gvo;
 	}
 
 }
