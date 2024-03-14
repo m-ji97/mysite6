@@ -48,14 +48,13 @@ public class ApiGuestbookController {
 	
 	//삭제
 	@ResponseBody
-	@RequestMapping(value ="/api/guestbooks/delete", method = RequestMethod.POST)
-	public String delete(@ModelAttribute GuestbookVo guestbookVo) {
+	@RequestMapping(value ="/api/guestbooks/delete", method = {RequestMethod.GET,RequestMethod.POST})
+	public String delete(@RequestParam(value = "no") int no,@RequestParam(value = "password") int password, GuestbookVo guestbookVo) {
 		System.out.println("ApiGuestbookController.Delete()");
-		System.out.println(guestbookVo);
 		
-		guestbookService.exeDelete(guestbookVo);
+		guestbookService.exeDelete(no, password);
 		
-		return "";
+		return "redirect:/guestbook/addlistForm";
 		
 	}
 	

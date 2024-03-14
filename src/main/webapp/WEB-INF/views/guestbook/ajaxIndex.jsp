@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function(){
 			no: no,
 			password: password
 		}
-		console.log(guestbookVo);
+		//console.log(guestbookVo);
 		//서버로 전송// /*url/api/guestbooks/delete post*/
 		
 		axios({
@@ -266,9 +266,12 @@ document.addEventListener("DOMContentLoaded", function(){
 			
 			responseType: 'json' //수신타입
 		}).then(function (response) {
-			console.log(response); //수신데이타
-		
-		}).catch(function (error) {
+			console.log("수인데이터:"+response); //수신데이타
+			console.log("수인데이터:"+response.data);
+			let no = response.data;
+			rmTd(no);
+		})
+		.catch(function (error) {
 			console.log(error);
 		});
 		
@@ -319,6 +322,15 @@ function render(guestbookVo, dir){
 		guestbookListArea.insertAdjacentHTML("afterbegin",str);
 	}else{
 		console.log("방향체크");
+	}
+	//삭제
+	function rmtd(no){
+		let trTag = document.querySelector(".guestRead tr");
+		let tdTag = document.querySelector(".guestRead tr td");
+		console.log(tdTag.textContent);
+		if(no == tdTag.textContent){
+			trTag.prrentElement.parentElement.remove();
+		}
 	}
 	
 }

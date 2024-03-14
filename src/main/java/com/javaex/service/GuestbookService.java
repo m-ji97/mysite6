@@ -71,10 +71,14 @@ public class GuestbookService {
 	public GuestbookVo exeDelete(GuestbookVo guestbookVo) {
 		System.out.println("GuestService.exeDelete()");
 		
-		//삭제
-		GuestbookVo gvo = guestbookDao.insertDeletekey(guestbookVo);
+		//저장
+		System.out.println(guestbookVo);
+		guestbookDao.insertDeletekey(guestbookVo);
+		System.out.println(guestbookVo);
 		
-		return gvo;
+		GuestbookVo gVo= guestbookDao.gustbookSelectOne(guestbookVo.getNo());
+		
+		return gVo;
 	}
 
 }

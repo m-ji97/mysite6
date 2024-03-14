@@ -68,11 +68,11 @@ public class GuestbookDao {
 	}
 	
 	//삭제
-	public GuestbookVo insertDeletekey(int no) {
+	public int insertDeletekey(GuestbookVo guestbookVo) {
 		System.out.println("GuestbookDao.insertDeletekey()");
 		
-		sqlSession.delete("guestbook.delete", no);
-		return GuestbookVo;
+		int count = sqlSession.delete("guestbook.insertDeletekey", guestbookVo);
+		return count;
 	}
 
 }
