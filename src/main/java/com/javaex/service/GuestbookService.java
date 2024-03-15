@@ -67,18 +67,5 @@ public class GuestbookService {
 		
 		return gvo;
 	}
-	//ajax 삭제
-	public GuestbookVo exeDelete(GuestbookVo guestbookVo) {
-		System.out.println("GuestService.exeDelete()");
-		
-		//저장
-		System.out.println(guestbookVo);
-		guestbookDao.insertDeletekey(guestbookVo);
-		System.out.println(guestbookVo);
-		
-		GuestbookVo gVo= guestbookDao.gustbookSelectOne(guestbookVo.getNo());
-		
-		return gVo;
-	}
 
 }

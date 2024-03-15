@@ -51,10 +51,10 @@ public class GuestbookController {
 	
 	// 삭제
 	@RequestMapping(value = "/delete", method = { RequestMethod.GET, RequestMethod.POST })
-	public String delete(@ModelAttribute GuestbookVo guestVo) {
+	public String delete(@ModelAttribute GuestbookVo guestbookVo) {
 		System.out.println("GuestbookController.delete()");
 
-		guestbookService.exeRemove(guestVo);
+		guestbookService.exeRemove(guestbookVo);
 		
 		return "redirect:/guestbook/addlist";
 	}
